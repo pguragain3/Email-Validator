@@ -1,0 +1,21 @@
+{
+    "name": "pg/emailvalidator",
+    "description": "validates email",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Pg\\EmailChecker\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "PrabeshG"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "egulias/email-validator": "^3.1",
+        "phpoffice/phpspreadsheet": "^1.19"
+    }
+}
