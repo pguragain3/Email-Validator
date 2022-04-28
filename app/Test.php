@@ -24,10 +24,11 @@ $multipleValidations = new MultipleValidationWithAnd([
 // Let's traverse the images directory
 $fileSystemIterator = new FilesystemIterator('inputs');
 
-$entries = array();
 foreach ($fileSystemIterator as $fileInfo) {
     $filename = $fileInfo->getFilename();
     $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+    $reader->setReadDataOnly(true); 
+    $reader->setReadEmptyCells(false);
     $spreadsheet = $reader->load("inputs/" . $filename);
 
     $d = $spreadsheet->getSheet(0)->toArray();
@@ -71,6 +72,8 @@ foreach ($fileSystemIterator as $fileInfo) {
         }
     }
 
+    $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(40);
+    $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(30);
     // Write an .xlsx file  
     $writer = new Xlsx($spreadsheet);
 
